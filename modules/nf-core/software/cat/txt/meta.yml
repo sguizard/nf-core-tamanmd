@@ -1,0 +1,39 @@
+name: cat_txt
+description: merge txt files
+keywords:
+  - txt
+  - concatenate
+tools:
+  - cat:
+      description: The cat utility reads files sequentially, writing them to the standard output
+      documentation: https://www.gnu.org/software/coreutils/manual/html_node/cat-invocation.html
+
+
+input:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [ id:'test', single_end:false ]
+  - txt:
+      type: file
+      description: txt file
+      pattern: "*.txt"
+
+output:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [ id:'test', single_end:false ]
+  - version:
+      type: file
+      description: File containing software version
+      pattern: "*.{version.txt}"
+  - bam:
+      type: file
+      description: merged txt file
+      pattern: "*.merged.txt"
+
+authors:
+  - "@sguizard"

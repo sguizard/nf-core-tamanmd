@@ -11,14 +11,21 @@
             "fa_icon": "fas fa-terminal",
             "description": "Define where the pipeline should find input data and save output data.",
             "required": [
-                "input"
+                "input",
+                "database"
             ],
             "properties": {
                 "input": {
                     "type": "string",
-                    "description": "Path to comma-separated file containing information about the samples in the experiment.",
-                    "help_text": "You will need to create a design file with information about the samples in your experiment before running the pipeline. Use this parameter to specify its location.",
+                    "description": "Path to bed file containing anotation.",
+                    "help_text": "This pipeline analyse one bed file a at time. Please the bed produced by TAMA collapse or TAMA merge in bed12 format. ",
                     "fa_icon": "fas fa-file-csv"
+                },
+                "database": {
+                    "type": "string",
+                    "fa_icon": "fas fa-database",
+                    "description": "Path to protein database file.",
+                    "help_text": "Each translated ORF is blasted against a protein database. \nPlease provide the fasta file path of the database of your choice (Uniref90, swiss-prot, ...)"
                 },
                 "outdir": {
                     "type": "string",
@@ -67,7 +74,46 @@
                     "hidden": true,
                     "help_text": "Do not load `igenomes.config` when running the pipeline. You may choose this option if you observe clashes between custom parameters and those supplied in `igenomes.config`."
                 }
-            }
+            },
+            "required": [
+                "fasta"
+            ]
+        },
+        "blastp_options": {
+            "title": "Blastp options",
+            "type": "object",
+            "description": "",
+            "default": "",
+            "properties": {
+                "evalue": {
+                    "type": "string",
+                    "description": "Expectation value (E) threshold for saving hits",
+                    "default": "1e-10",
+                    "fa_icon": "fas fa-greater-than-equal"
+                }
+            },
+            "required": [
+                "evalue"
+            ],
+            "fa_icon": "fas fa-bomb"
+        },
+        "fasta_splitter_options": {
+            "title": "Fasta splitter options",
+            "type": "object",
+            "description": "",
+            "default": "",
+            "properties": {
+                "n": {
+                    "type": "integer",
+                    "description": "Split fasta file in n chunks",
+                    "default": 100,
+                    "fa_icon": "fab fa-buffer"
+                }
+            },
+            "required": [
+                "n"
+            ],
+            "fa_icon": "fas fa-hand-scissors"
         },
         "generic_options": {
             "title": "Generic options",
@@ -273,6 +319,12 @@
         },
         {
             "$ref": "#/definitions/reference_genome_options"
+        },
+        {
+            "$ref": "#/definitions/blastp_options"
+        },
+        {
+            "$ref": "#/definitions/fasta_splitter_options"
         },
         {
             "$ref": "#/definitions/generic_options"

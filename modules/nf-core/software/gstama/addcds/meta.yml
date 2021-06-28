@@ -1,0 +1,51 @@
+name: gstama_addcds
+description: TAMA GO tool: Add cds to bed annotation file
+keywords:
+  - orf
+  - cds
+  - bed
+tools:
+  - gstama:
+      description: Gene-Switch Transcriptome Annotation by Modular Algorithms
+      homepage: None
+      documentation: None
+      tool_dev_url: None
+      doi: ""
+      licence: ['GPL v3 License']
+
+input:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [ id:'test', single_end:false ]
+  - txt:
+      type: file
+      description: txt from tama orf parser file
+      pattern: "*.txt"
+  - bed:
+      type: file
+      description: original bed file
+      pattern: "*.bed"
+  - fa:
+      type: file
+      description: sequence in fasta format extracted at first file
+      pattern: "*.fa"
+
+output:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [ id:'test', single_end:false ]
+  - version:
+      type: file
+      description: File containing software version
+      pattern: "*.{version.txt}"
+  - bed:
+      type: file
+      description: bed file with cds
+      pattern: "*.cds.bed"
+
+authors:
+  - "@sguizard"

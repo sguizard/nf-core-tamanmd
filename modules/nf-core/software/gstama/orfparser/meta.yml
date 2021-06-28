@@ -1,0 +1,42 @@
+name: gstama_orfparser
+description: TAMA GO blasp parsing tool
+keywords:
+  - blastp
+  - orf
+tools:
+  - gstama:
+      description: Gene-Switch Transcriptome Annotation by Modular Algorithms
+      homepage: None
+      documentation: None
+      tool_dev_url: None
+      doi: ""
+      licence: ['GPL v3 License']
+
+input:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [ id:'test' ]
+  - txt:
+      type: file
+      description: txt file
+      pattern: "*.txt"
+
+output:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [ id:'test' ]
+  - version:
+      type: file
+      description: File containing software version
+      pattern: "*.{version.txt}"
+  - txt:
+      type: file
+      description: txt file
+      pattern: "*.orf.txt"
+
+authors:
+  - "@sguizard"

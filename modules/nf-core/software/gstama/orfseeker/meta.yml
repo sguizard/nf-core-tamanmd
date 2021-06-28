@@ -1,0 +1,41 @@
+name: gstama_orfseeker
+description: TAMA GO script: tama_orf_seeker.py
+keywords:
+  - tama_orf_seeker.py
+tools:
+  - gstama:
+      description: Gene-Switch Transcriptome Annotation by Modular Algorithms
+      homepage: https://github.com/sguizard/gs-tama
+      documentation: https://github.com/sguizard/gs-tama
+      tool_dev_url: https://github.com/sguizard/gs-tama
+      doi: ""
+      licence: ['GPL v3 License']
+
+input:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [ id:'test', single_end:false ]
+  - fa:
+      type: file
+      description: nt fasta file
+      pattern: "*.fa"
+
+output:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [ id:'test', single_end:false ]
+  - version:
+      type: file
+      description: File containing software version
+      pattern: "*.{version.txt}"
+  - orfs:
+      type: file
+      description: nt fasta file of orfs
+      pattern: "*.fasta"
+
+authors:
+  - "@sguizard"
