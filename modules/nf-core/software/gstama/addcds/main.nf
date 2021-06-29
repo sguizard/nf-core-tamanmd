@@ -13,13 +13,9 @@ process GSTAMA_ADDCDS {
 
     conda (params.enable_conda ? "bioconda::gs-tama=1.0.1" : null)
     if (workflow.containerEngine == 'singularity' && !params.singularity_pull_docker_container) {
-        //TODO Replace with new version of gstama when available
-        // container "https://depot.galaxyproject.org/singularity/gs-tama:1.0.1--hdfd78af_0"
-        container "docker://sguizard/tama"
+        container "https://depot.galaxyproject.org/singularity/gs-tama:1.0.1--hdfd78af_0"
     } else {
-        //TODO Replace with new version of gstama when available
-        // container "quay.io/biocontainers/gs-tama:1.0.1--hdfd78af_0"
-        container "docker://sguizard/tama"
+        container "quay.io/biocontainers/gs-tama:1.0.1--hdfd78af_0"
     }
 
     input:
