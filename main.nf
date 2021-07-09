@@ -52,8 +52,9 @@ Workflow.validateMainParams(workflow, params, json_schema, log)
 /* --            RUN WORKFLOW(S)               -- */
 ////////////////////////////////////////////////////
 
+include { TAMANMD } from './workflows/pipeline' addParams( summary_params: summary_params )
+
 workflow {
-    include { TAMANMD } from './workflows/pipeline' addParams( summary_params: summary_params )
     TAMANMD ()
 }
 
