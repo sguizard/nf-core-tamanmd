@@ -28,11 +28,15 @@ process BLAST_MAKEBLASTDB {
     script:
     def software = getSoftwareName(task.process)
     """
+    export BLASTDB_LMDB_MAP_SIZE=100000000
+
     makeblastdb \\
         -in $fasta \\
         $options.args
+
     mkdir blast_db
     mv ${fasta}* blast_db
+
     echo \$(blastn -version 2>&1) | sed 's/^.*blastn: //; s/ .*\$//' > ${software}.version.txt
     """
 }
