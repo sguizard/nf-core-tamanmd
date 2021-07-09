@@ -68,7 +68,7 @@ include { BEDTOOLS_GETFASTA     } from '../modules/nf-core/software/bedtools/get
 include { GSTAMA_ORFSEEKER      } from '../modules/nf-core/software/gstama/orfseeker/main'     addParams( options: modules['orfseeker'] )
 include { GSTAMA_FASTASPLITTER  } from '../modules/nf-core/software/gstama/fastasplitter/main' addParams( options: [ args:"${params.n}", publish_dir:"3A_fastasplitter" ] )
 include { BLAST_MAKEBLASTDB     } from '../modules/nf-core/software/blast/makeblastdb/main'    addParams( options: modules['makeblastdb'] )
-include { BLAST_BLASTP          } from '../modules/nf-core/software/blast/blastp/main'         addParams( options: [ args:"-evalue ${params.evalue}, publish_dir:"4_blastp" ]" ] )
+include { BLAST_BLASTP          } from '../modules/nf-core/software/blast/blastp/main'         addParams( options: [ args:"-evalue ${params.evalue}", publish_dir:"4_blastp" ] )
 include { CAT_TXT               } from '../modules/nf-core/software/cat/txt/main'              addParams( options: modules['cattxt'] )
 include { GSTAMA_ORFPARSER      } from '../modules/nf-core/software/gstama/orfparser/main'     addParams( options: modules['orfparser'] )
 include { GSTAMA_ADDCDS         } from '../modules/nf-core/software/gstama/addcds/main'        addParams( options: modules['addcds'] )
