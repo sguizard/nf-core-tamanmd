@@ -6,7 +6,7 @@ options        = initOptions(params.options)
 
 process BLAST_MAKEBLASTDB {
     tag "$fasta"
-    label 'process_highmem'
+    label 'process_high_memory'
     publishDir "${params.outdir}",
         mode: params.publish_dir_mode,
         saveAs: { filename -> saveFiles(filename:filename, options:params.options, publish_dir:getSoftwareName(task.process), meta:[:], publish_by_meta:[]) }
